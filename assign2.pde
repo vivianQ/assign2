@@ -48,10 +48,10 @@ void draw(){
   
   switch(gameState){
     case GAME_START:
-      image(start1img,0,0);
+      image(start2img,0,0);
       if( mouseY>380 && mouseY<410 && mouseX>200 && mouseX<450){
         noStroke();
-        image(start2img,0,0);
+        image(start1img,0,0);
         if(mousePressed){
           gameState= GAME_RUN;
         }
