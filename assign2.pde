@@ -68,18 +68,27 @@ void draw(){
       //
 
       rect(10,10,40,20);
-      if( ex<=fx && ex+60>=fx  &&ex<=fx+50 && ex+60>=fx+50&&  ey<=fy && ey+60>=fy&&ey<=fy+50 && ey+60>=fy+50){
-        hp=hp-40;
-        println(hp);
-        //rect(10,10,hp,20);
-        hit=1;
+       if(((fx>=tx && fx<=tx+40) && (fy+25>=ty && fy+25<=ty+40))||((fx+25>=tx && fx+25<=tx+40) && (fy+50>=ty && fy+50<=ty+40)) ||((fx+50>=tx && fx+50<=tx+40) && (fy+50>=ty && fy+50<=ty+40)) ||((fx+25>=tx && fx+25<=tx+40) && (fy>=ty && fy<=ty+40)||((fx+50>=tx && fx+25<=tx+40) && (fy+50>=ty && fy+25<=ty+40)) ||((fx+50>=tx && fx+50<=tx+40) && (fy>=ty && fy<=ty+40)))){
+    tx=floor(random(3,300));
+    ty=floor(random(3,277));
+    hp+=20;
+    if(hp>200){
+     hp=200; 
     }
-      if( fx<=tx && fx+50>=tx &&fx<=tx+40 && fx+50>=tx+40&& fy<=ty && fy+50>=ty&&fy<=ty+40 &&fy+50>=ty+40){
-         hp=hp+20;
-         println(hp);
-         //rect(10,10,hp,20);
-         get=1;
-      }
+  }
+  if(fy<ey){
+   ey-=2; 
+  }
+  if(fy>ey){
+   ey+=2; 
+  }
+  if(((fx>=ex && fx<=ex+60) && (fy+25>=ey && fy+25<=ey+60)) ||((fx+50>=ex && fx+50<=ex+60) && (fy>=ey && fy<=ey+60)) ||((fx+25>=ex && fx+25<=ex+60) && (fy+50>=ey && fy+50<=ey+60)) ||((fx+25>=ex && fx+25<=ex+60) && (fy>=ey && fy<=ey+60)) ||((fx+50>=ex && fx+25<=ex+60) && (fy+50>=ey && fy+25<=ey+60)) ||((fx+50>=ex && fx+50<=ex+60) && (fy+50>=ey && fy+50<=ey+60))){
+    hp-=40;
+    ex=640;
+    ey=floor(random(3,277));
+  }
+  
+
       if(hp>=200){
         hp=200;
         rect(10,10,200,20); 
@@ -146,9 +155,9 @@ void draw(){
         image(enemyimg,ex,ey);
         hit=0;
        }
-      //
 
     break;
+    
     case GAME_OVER:
       image(end1img,0,0);
       //rect(200,310,250,40);
@@ -203,4 +212,3 @@ void keyReleased(){
   }
 
 }
-
